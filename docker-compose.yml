@@ -1,0 +1,15 @@
+version: "3.7"
+services:
+  intellij:
+    image: madduci/docker-intellij:2020.3.1-community
+    build:
+      context: ./
+    environment:
+      DISPLAY: "$DISPLAY"
+    volumes:
+      - user-data:/home/user/.config/JetBrains
+      - /tmp/.X11-unix:/tmp/.X11-unix
+      - $HOME/.Xauthority:/home/user/.Xauthority
+
+volumes:
+  user-data:
