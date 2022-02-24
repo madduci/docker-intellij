@@ -1,7 +1,7 @@
 version: "3.7"
 services:
   intellij:
-    image: madduci/docker-intellij:2020.3.1-community
+    image: madduci/docker-intellij:2021.3.2-community
     build:
       context: ./
     environment:

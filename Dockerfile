@@ -1,6 +1,6 @@
 FROM ubuntu:20.04 as build
 
-ARG VERSION=2020.3.1
+ARG VERSION=2021.3.2
 ENV INTELLIJ_URL="https://download.jetbrains.com/idea/ideaIC-${VERSION}.tar.gz"
 
 RUN echo "Installing curl" \
@@ -70,5 +70,8 @@ RUN echo "Installing required tools and libraries" \
     && rm -rf /tmp/*
 
 USER ${USER}
+
+RUN echo "Creating .config/JetBrains folder" \
+    && mkdir -p ~/.config/JetBrains
 
 ENTRYPOINT [ "/opt/intellij/bin/idea.sh" ]
