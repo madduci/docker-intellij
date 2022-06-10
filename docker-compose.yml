@@ -1,6 +1,8 @@
 version: "3.7"
 services:
   intellij:
+    container_name: docker-intellij
+    restart: unless-stopped
     image: madduci/docker-intellij:2021.3.2-community
     build:
       context: ./
@@ -10,6 +12,7 @@ services:
       - user-data:/home/user/.config/JetBrains
       - /tmp/.X11-unix:/tmp/.X11-unix
       - $HOME/.Xauthority:/home/user/.Xauthority
+      - /home/madduci/Projects:/home/user/Projects
 
 volumes:
   user-data:
