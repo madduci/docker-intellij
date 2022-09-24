@@ -3,7 +3,7 @@ services:
   intellij:
     container_name: docker-intellij
     restart: unless-stopped
-    image: madduci/docker-intellij:2021.3.2-community
+    image: madduci/docker-intellij:2022.2.2-community
     build:
       context: ./
     environment:
