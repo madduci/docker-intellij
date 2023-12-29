@@ -1,6 +1,6 @@
 FROM ubuntu:22.04 as build
 
-ARG VERSION=2023.1.3
+ARG VERSION=2023.3.2
 ENV INTELLIJ_URL="https://download.jetbrains.com/idea/ideaIC-${VERSION}.tar.gz"
 
 RUN echo "Installing curl" \
