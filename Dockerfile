@@ -1,6 +1,6 @@
-FROM ubuntu:22.04 as build
+FROM ubuntu:24.04 as build
 
-ARG VERSION=2023.3.2
+ARG VERSION=2024.2.4
 ENV INTELLIJ_URL="https://download.jetbrains.com/idea/ideaIC-${VERSION}.tar.gz"
 
 RUN echo "Installing curl" \
@@ -19,7 +19,7 @@ RUN echo "Installing curl" \
 # Installing programming Fonts
 RUN curl -L https://github.com/hbin/top-programming-fonts/raw/master/install.sh | bash
     
-FROM ubuntu:22.04
+FROM ubuntu:24.04
 
 LABEL description="Docker Image with IntelliJ Community Edition" \
       maintainer="Michele Adduci <adduci@tutanota.com>" \
@@ -33,7 +33,7 @@ ENV USER=${USERNAME} \
 
 RUN echo "Creating non-root user: ${USER}" \
     && mkdir -p ${USER_HOME} \
-    && useradd --system -d ${USER_HOME} --shell /bin/bash --uid 1000 --gid root ${USER} \
+    && useradd --system -d ${USER_HOME} --shell /bin/bash --uid 1001 --gid root ${USER} \
     && chown -R ${USER} ${USER_HOME} \
     && chown ${USER} -R ${USER_HOME} \
     && echo "Setting password for ${USER}" \
@@ -55,7 +55,6 @@ RUN echo "Installing required tools and libraries" \
         libxslt1.1 \
         libxml2 \
         libgtk2.0 \
-        libasound2 \  
         fonts-liberation \
     && echo "Setting timezone to $TZ" \
     && echo $TZ > /etc/timezone \
